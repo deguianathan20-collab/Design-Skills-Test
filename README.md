@@ -1,6 +1,6 @@
-# Camera Store homepage
+# ProjectA
 
-A camera store homepage and Cameras mega menu, built 1:1 from the Figma design and extended to tablet and phone.
+ProjectA is a camera store. This is its homepage and Cameras mega menu, built 1:1 from the Figma design and extended to tablet and phone.
 
 **Figma file:** [Designer Skills Test Edit v2](https://www.figma.com/design/JuiXss5zgDMKGeqL5GE8kp/Designer-Skills-Test-Edit-v2?node-id=0-1&t=5H1m5mcf2N7EvIFU-1)
 
@@ -10,6 +10,7 @@ A camera store homepage and Cameras mega menu, built 1:1 from the Figma design a
 
 - **Homepage**, matched to the Figma frame at 1728px: hero, categories, popular products, SEO section, trade-in band, featured products and footer.
 - **Mega menu** for Cameras. It opens on hover with a mouse, and on click or Enter from the keyboard.
+- **Sticky navigation.** Once the hero header scrolls away, it pins to the top as a white bar with dark links. Hover and open states use #C2471A, which passes contrast on white.
 - **Desktop sizes** from 1025px to 2560px. The content stays at 1512px wide on large screens, and the mega menu drops its product cards as space runs out.
 - **Tablet and phone** layouts below 1025px, with a slide-in menu built from the mega menu's parts. These aren't in the Figma file.
 - **Fluid type.** Every font size scales between a 375px and a 1728px screen.

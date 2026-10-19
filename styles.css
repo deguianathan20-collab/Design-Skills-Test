@@ -83,11 +83,16 @@ button, input { font: inherit; color: inherit; }
 }
 
 /* Underlined links. The underline is drawn as a background so it can redraw on hover. */
+/* Every link gets the same one-line box plus a small gap below, and the line
+   sits at its bottom edge: just under the descenders, wherever the link is.
+   The negative margin cancels the gap so surrounding layout doesn't move. */
 .text-link, .u-link {
+  display: inline-block; line-height: 1;
+  padding-bottom: .2em; margin-bottom: -.2em;
   text-decoration: none;
   background: linear-gradient(currentColor, currentColor) no-repeat;
   background-size: 100% 1px;
-  background-position: 0 calc(100% - .12em);
+  background-position: 0 100%;
   transition: color .2s ease;
 }
 .text-link { font-size: var(--fs-body); line-height: 1; color: var(--headline); white-space: nowrap; }
@@ -147,7 +152,8 @@ button, input { font: inherit; color: inherit; }
    Hero + header (Figma 1:100)
    ========================================================= */
 .hero {
-  position: relative; isolation: isolate;
+  /* z-index lifts the hero layer, and the sticky header inside it, above later sections */
+  position: relative; z-index: 30; isolation: isolate;
   display: flex; flex-direction: column;
   min-height: clamp(760px, 100svh, 1117px);
   color: var(--surface-alt);
@@ -226,6 +232,46 @@ button, input { font: inherit; color: inherit; }
 .badge.is-bump { animation: bump .55s var(--ease-spring); }
 @keyframes bump { 0% { scale: 1; } 35% { scale: 1.6; } 100% { scale: 1; } }
 .search-toggle, .menu-toggle { display: none; }
+
+/* ---------- Sticky header ----------
+   Once the hero header scrolls out of view, the same header pins to the top
+   as a compact white bar. Links turn near-black; hover and open states use
+   brand hover (#C2471A, 5:1 on white) because brand orange is only 4:1. */
+.hero.has-stuck-header { padding-top: var(--header-space, 0px); }   /* holds the header's place so the hero doesn't move */
+.site-header.is-stuck {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--surface-bg); color: var(--headline);
+  border-bottom: 1px solid var(--divider);
+  box-shadow: 0 10px 30px -20px rgba(12, 14, 18, .35);
+}
+.motion .site-header.is-stuck:not(.no-anim) { animation: header-in .5s var(--ease-out); }
+@keyframes header-in { from { transform: translateY(-100%); } to { transform: none; } }
+.site-header.is-stuck .topbar { display: none; }
+.site-header.is-stuck .navbar-wrap { margin-top: 0; }
+.site-header.is-stuck .navbar { height: 72px; }
+.site-header.is-stuck .logo { color: var(--headline); font-size: calc(var(--fs-logo) * .85); }
+.site-header.is-stuck .primary-nav__link { color: var(--headline); }
+.site-header.is-stuck .primary-nav__link:hover,
+.site-header.is-stuck .primary-nav__trigger[aria-expanded="true"] { color: var(--brand-hover); }
+/* The exported icons are white; render them dark on the white bar */
+.site-header.is-stuck .chevron--default,
+.site-header.is-stuck .search > img,
+.site-header.is-stuck .icon-btn > img { filter: brightness(0); }
+.site-header.is-stuck .icon-btn { color: var(--headline); }
+.site-header.is-stuck .icon-btn:hover { opacity: .65; }
+.site-header.is-stuck .search { padding: 12px 16px; background: var(--surface-alt); box-shadow: inset 0 0 0 1px var(--divider); }
+.site-header.is-stuck .search:hover { background: #f1f1f3; }
+.site-header.is-stuck .search:focus-within { background: var(--surface-bg); box-shadow: inset 0 0 0 1px var(--body); }
+.site-header.is-stuck .search input { color: var(--headline); }
+.site-header.is-stuck .search input::placeholder { color: var(--body); }
+.site-header.is-stuck .mega { top: 100%; }
+
+.page-scrim {
+  position: fixed; inset: 0; z-index: 15;
+  background: rgba(12, 14, 18, .45);
+  opacity: 0; pointer-events: none; transition: opacity .3s ease;
+}
+.page-scrim.is-on { opacity: 1; pointer-events: auto; }
 
 /* ---------- Mega menu (Figma 1:521) ---------- */
 .mega {
@@ -543,7 +589,7 @@ button, input { font: inherit; color: inherit; }
 .intro-modal__lede { font-size: var(--fs-body); line-height: 1.6; color: var(--body); }
 .intro-modal__label { margin-bottom: 8px; font-family: var(--serif); font-style: italic; font-size: var(--fs-small); line-height: 1; color: var(--body); }
 .intro-modal__note {
-  padding: 16px 18px; border-radius: 8px; background: var(--orange-50); border-left: 3px solid var(--brand);
+  padding: 16px 18px; border-radius: 8px; background: var(--orange-50);
   font-size: var(--fs-body); line-height: 1.5; color: var(--headline);
 }
 .intro-modal__note .intro-modal__label { color: var(--brand); }
@@ -764,6 +810,7 @@ button, input { font: inherit; color: inherit; }
   .mega__links { gap: 56px; }
 }
 @media (max-width: 1240px) {
+  .navbar__right, .primary-nav { gap: 32px; }   /* room for the ProjectA wordmark on small laptops */
   .hero__content { gap: 32px; }
   .shot-card { margin-right: 0; }
 }
@@ -809,6 +856,7 @@ button, input { font: inherit; color: inherit; }
   .topbar__extra { display: none; }
   .navbar-wrap { margin-top: 12px; }
   .navbar { height: 56px; gap: 16px; }
+  .site-header.is-stuck .navbar { height: 60px; }
   .navbar__right, .navbar__tools { gap: 18px; }
 
   .hero { min-height: max(780px, 100svh); }

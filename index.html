@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Camera Store</title>
+<title>ProjectA</title>
 <meta name="description" content="New and used cameras, lenses and film from a shop run by working photographers. Every used item is inspected and covered for 12 months.">
 <meta name="theme-color" content="#0c0e12">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Camera Store">
+<meta property="og:title" content="ProjectA">
 <meta property="og:description" content="Homepage and mega menu for a camera store, built 1:1 from Figma.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@
 
     <div class="navbar-wrap">
       <div class="navbar container">
-        <a class="logo" href="#top">Logo</a>
+        <a class="logo" href="#top">ProjectA</a>
 
         <div class="navbar__right">
           <nav class="primary-nav" aria-label="Main">
@@ -173,6 +173,10 @@
       </div>
     </div>
   </header>
+
+  <!-- Dims the page behind the mega menu when it opens from the sticky header.
+       Lives inside the hero so it stacks below the pinned header but above every section. -->
+  <div class="page-scrim" aria-hidden="true" data-scrim></div>
 
   <section class="hero__content container" aria-labelledby="hero-title">
     <div class="hero__copy">
@@ -452,7 +456,7 @@
   <div class="drawer__scrim" data-drawer-close></div>
   <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="drawer__head">
-      <a class="logo logo--dark" href="#top">Logo</a>
+      <a class="logo logo--dark" href="#top">ProjectA</a>
       <button class="drawer__close" type="button" aria-label="Close menu" data-drawer-close>
         <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 10.586 4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95Z" fill="currentColor"/></svg>
       </button>
@@ -494,7 +498,7 @@
   <div class="intro-modal__panel">
     <div class="intro-modal__media" aria-hidden="true">
       <img src="assets/hero-bg.jpg" width="2752" height="1536" alt="">
-      <span class="intro-modal__logo">Logo</span>
+      <span class="intro-modal__logo">ProjectA</span>
     </div>
     <button class="intro-modal__close" type="button" aria-label="Close" data-intro-close>
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 10.586 4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95Z" fill="currentColor"/></svg>

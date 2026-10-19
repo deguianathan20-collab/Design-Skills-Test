@@ -286,8 +286,43 @@
     if (open && !isOpen()) moveHighlight(activeRow, true);
     mega.toggleAttribute('data-open', open);
     trigger.setAttribute('aria-expanded', String(open));
-    hero.classList.toggle('is-menu-open', open);
+    // In the hero the photo dims; from the sticky bar the whole page dims instead.
+    hero.classList.toggle('is-menu-open', open && !stuck);
+    scrim.classList.toggle('is-on', open && stuck);
   };
+
+  /* ---------- Sticky header: pins as a white bar once the hero header scrolls away ---------- */
+  const siteHeader = $('.site-header');
+  const scrim = $('[data-scrim]');
+  let stuck = false;
+  let stickAt = 0;
+
+  // Measure while the header is in the page flow; the hero reserves that space when it pins.
+  const measureHeader = () => {
+    if (stuck) return;
+    stickAt = siteHeader.offsetTop + siteHeader.offsetHeight;
+    hero.style.setProperty('--header-space', `${siteHeader.offsetHeight}px`);
+  };
+  const setStuck = (on, animate = true) => {
+    if (on === stuck) return;
+    if (isOpen()) setMega(false);
+    stuck = on;
+    siteHeader.classList.toggle('no-anim', !animate);
+    siteHeader.classList.toggle('is-stuck', on);
+    hero.classList.toggle('has-stuck-header', on);
+  };
+  const updateStuck = (animate = true) => setStuck(window.scrollY > stickAt, animate);
+
+  measureHeader();
+  updateStuck(false);
+  window.addEventListener('scroll', () => updateStuck(), { passive: true });
+  window.addEventListener('resize', () => {
+    // Header height changes between breakpoints: re-measure it in place, then re-pin without replaying the slide-in.
+    setStuck(false, false);
+    measureHeader();
+    updateStuck(false);
+  });
+  document.fonts?.ready.then(() => { if (!stuck) measureHeader(); });
 
   [trigger, mega].forEach((el) => {
     el.addEventListener('mouseenter', () => { if (canHover.matches) setMega(true); });
