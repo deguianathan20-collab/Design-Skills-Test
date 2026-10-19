@@ -1,0 +1,4 @@
+# Store text with LF line endings; never touch binary images
+* text=auto eol=lf
+*.jpg binary
+*.png binary

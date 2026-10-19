@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camera Store</title>
+<meta name="description" content="New and used cameras, lenses and film from a shop run by working photographers. Every used item is inspected and covered for 12 months.">
+<meta name="theme-color" content="#0c0e12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Camera Store">
+<meta property="og:description" content="Homepage and mega menu for a camera store, built 1:1 from Figma.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-bg.jpg">
+<link rel="stylesheet" href="styles.css">
+<script>
+  /* Turn motion on before first paint, unless the visitor prefers reduced motion.
+     Add ?motion=on to the URL to preview the motion anyway (e.g. on a PC with
+     Windows animation effects switched off). If main.js never runs, drop motion
+     after 4s so nothing stays hidden. */
+  (function () {
+    var root = document.documentElement;
+    var forced = new URLSearchParams(location.search).get('motion') === 'on';
+    if (!forced && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('motion');
+    if (forced) root.classList.add('motion-forced');
+    setTimeout(function () { if (!root.classList.contains('motion-live')) root.classList.remove('motion'); }, 4000);
+  })();
+</script>
+</head>
+<body>
+
+<!-- ============ Hero + header (Figma 1:100) ============ -->
+<div class="hero" id="top">
+  <div class="hero__bg" aria-hidden="true"><div class="hero__photo"></div></div>
+
+  <header class="site-header">
+    <div class="topbar">
+      <div class="topbar__inner">
+        <p>Free 2-day shipping on orders over $99.<span class="topbar__extra"> Free returns within 30 days.</span></p>
+        <nav class="topbar__links" aria-label="Store information">
+          <a href="#">Visit the store</a>
+          <a href="#">Trade in</a>
+          <a href="#">Help</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="navbar-wrap">
+      <div class="navbar container">
+        <a class="logo" href="#top">Logo</a>
+
+        <div class="navbar__right">
+          <nav class="primary-nav" aria-label="Main">
+            <a class="primary-nav__link" href="#" style="--i:0">About Us</a>
+            <a class="primary-nav__link" href="#" style="--i:1">Our Store</a>
+            <button class="primary-nav__link primary-nav__trigger" type="button" aria-expanded="false" aria-controls="mega-cameras" style="--i:2" data-mega-trigger>
+              Cameras
+              <span class="chevrons" aria-hidden="true">
+                <img class="chevron--default" src="assets/icon-chevron-down.svg" width="8.48528" height="5.65685" alt="">
+                <img class="chevron--active" src="assets/icon-chevron-active.svg" width="8.48528" height="5.65685" alt="">
+              </span>
+            </button>
+          </nav>
+
+          <div class="navbar__tools">
+            <form class="search" role="search" action="#" style="--i:0">
+              <img src="assets/icon-search.svg" width="24" height="24" alt="">
+              <label class="sr-only" for="site-search">Search</label>
+              <input id="site-search" type="search" placeholder="Search cameras, lenses, film">
+            </form>
+            <button class="icon-btn search-toggle" type="button" aria-label="Search" style="--i:0" data-drawer-open data-focus-search>
+              <img src="assets/icon-search.svg" width="24" height="24" alt="">
+            </button>
+            <a class="icon-btn" href="#" aria-label="Account" style="--i:1"><img src="assets/icon-user.svg" width="24" height="24" alt=""></a>
+            <a class="icon-btn bag" href="#" aria-label="Bag, 2 items" style="--i:2" data-bag>
+              <img src="assets/icon-bag.svg" width="24" height="24" alt="">
+              <span class="badge" aria-hidden="true">2</span>
+            </a>
+            <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" style="--i:3" data-drawer-open>
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v2H3V4Zm0 7h18v2H3v-2Zm0 7h18v2H3v-2Z" fill="currentColor"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ Mega menu (Figma 1:521) ============ -->
+      <div class="mega" id="mega-cameras" role="region" aria-label="Cameras" data-mega>
+        <div class="mega__body">
+          <ul class="mega__types">
+            <li class="type-highlight" role="presentation" aria-hidden="true"></li>
+            <li><a class="mega-type is-active" href="#">
+              <img src="assets/icon-mirrorless-active.svg" width="40" height="40" alt="">
+              <span class="mega-type__text"><span class="mega-type__title">Mirrorless</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span>
+            </a></li>
+            <li><a class="mega-type" href="#">
+              <img src="assets/icon-dslr.svg" width="40" height="40" alt="">
+              <span class="mega-type__text"><span class="mega-type__title">DSLR</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span>
+            </a></li>
+            <li><a class="mega-type" href="#">
+              <img src="assets/icon-compact.svg" width="40" height="40" alt="">
+              <span class="mega-type__text"><span class="mega-type__title">Compact and Premium</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span>
+            </a></li>
+            <li><a class="mega-type" href="#">
+              <img src="assets/icon-film.svg" width="40" height="40" alt="">
+              <span class="mega-type__text"><span class="mega-type__title">Film and Instant</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span>
+            </a></li>
+            <li><a class="mega-type" href="#">
+              <img src="assets/icon-cinema.svg" width="40" height="40" alt="">
+              <span class="mega-type__text"><span class="mega-type__title">Cinema Cameras</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span>
+            </a></li>
+            <li><a class="mega-type" href="#">
+              <img src="assets/icon-used.svg" width="40" height="40" alt="">
+              <span class="mega-type__text"><span class="mega-type__title">Used Cameras</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span>
+            </a></li>
+          </ul>
+
+          <div class="mega__links">
+            <div class="link-col">
+              <p class="link-col__title">Shop by brand</p>
+              <ul><li><a href="#">Canon</a></li><li><a href="#">Nikon</a></li><li><a href="#">Sony</a></li><li><a href="#">Fujifilm</a></li><li><a href="#">Leica</a></li><li><a href="#">Panasonic</a></li><li><a href="#">OM System</a></li><li><a href="#">Ricoh</a></li></ul>
+            </div>
+            <div class="link-col">
+              <p class="link-col__title">Shop by use</p>
+              <ul><li><a href="#">Travel</a></li><li><a href="#">Street</a></li><li><a href="#">Portraits</a></li><li><a href="#">Sports and wildlife</a></li><li><a href="#">Vlogging</a></li><li><a href="#">First camera</a></li></ul>
+            </div>
+            <div class="link-col">
+              <p class="link-col__title">Shop by price</p>
+              <ul><li><a href="#">Under $800</a></li><li><a href="#">$800 to $1,500</a></li><li><a href="#">$1,500 to $3,000</a></li><li><a href="#">$3,000</a></li></ul>
+            </div>
+          </div>
+
+          <div class="mega__products">
+            <article class="mini-card">
+              <div class="mini-card__top">
+                <div class="mini-card__frame"><img class="mini-card__img" src="assets/fujifilm-x100vi.jpg" width="1024" height="572" alt="Fujifilm X100VI in silver" loading="lazy"></div>
+                <div class="product-meta">
+                  <div class="product-meta__text">
+                    <p class="product-meta__eyebrow">Shot with</p>
+                    <h3 class="product-meta__name">Fujifilm X100VI</h3>
+                    <p class="specs"><span>40MP</span><span>23mm f/2</span><span>6-stop IBIS</span></p>
+                  </div>
+                  <p class="rating"><img src="assets/icon-star.svg" width="12" height="12" alt="">4.9 (312)</p>
+                </div>
+                <span class="tag">Latest Release</span>
+              </div>
+              <div class="mini-card__foot"><a class="u-link" href="#">Checkout this camera</a><span class="mini-card__price">$1,599</span></div>
+            </article>
+            <article class="mini-card">
+              <div class="mini-card__top">
+                <div class="mini-card__frame"><img class="mini-card__img" src="assets/mega-sony-a7cii.jpg" width="1024" height="572" alt="Sony A7C II with a zoom lens" loading="lazy"></div>
+                <div class="product-meta">
+                  <div class="product-meta__text">
+                    <p class="product-meta__eyebrow">Shot with</p>
+                    <h3 class="product-meta__name">Sony A7C II</h3>
+                    <p class="specs"><span>40MP</span><span>23mm f/2</span><span>6-stop IBIS</span></p>
+                  </div>
+                  <p class="rating"><img src="assets/icon-star.svg" width="12" height="12" alt="">4.9 (312)</p>
+                </div>
+                <span class="tag">Top Sales</span>
+              </div>
+              <div class="mini-card__foot"><a class="u-link" href="#">Checkout this camera</a><span class="mini-card__price">$1,599</span></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="mega__footer">
+          <a class="btn btn--outline" href="#">See all 412 cameras</a>
+          <p>Not sure which type you need? <a class="u-link" href="#">Try the gear finder.</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero__content container" aria-labelledby="hero-title">
+    <div class="hero__copy">
+      <div class="hero__text">
+        <h1 class="hero__title" id="hero-title" data-type>Find the camera you'll actually carry.</h1>
+        <p class="hero__lede" data-type>New and used cameras, lenses and film from a shop run by working photographers. Every used item is inspected and covered for 12 months.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="#" style="--i:0">Shop Cameras</a>
+        <a class="btn btn--ghost btn--lg" href="#" style="--i:1">Browse Accessories</a>
+      </div>
+    </div>
+
+    <div class="shot-card" role="group" aria-label="Camera used for this photo">
+      <div class="shot-card__top">
+        <img class="shot-card__img" src="assets/fujifilm-x100vi.jpg" width="144" height="113" alt="Fujifilm X100VI">
+        <div class="product-meta">
+          <div class="product-meta__text">
+            <p class="product-meta__eyebrow" data-seq style="--i:0">Shot with</p>
+            <p class="product-meta__name" data-seq style="--i:1">Fujifilm X100VI</p>
+            <p class="specs" data-seq style="--i:2"><span>26MP</span><span>28mm f/2.8</span><span>6-stop IBIS</span></p>
+          </div>
+          <p class="rating" data-seq style="--i:3"><img src="assets/icon-star.svg" width="12" height="12" alt="">4.9 (312)</p>
+        </div>
+      </div>
+      <div class="shot-card__foot" data-seq style="--i:4"><a class="u-link" href="#">Checkout this camera</a><span>$1,599</span></div>
+    </div>
+  </section>
+</div>
+
+<main>
+  <!-- ============ Categories (Figma 1:170) ============ -->
+  <section class="section section--first container" aria-labelledby="categories-title">
+    <div class="section-head" data-reveal="focus">
+      <h2 class="h-section" id="categories-title">Categories</h2>
+      <a class="text-link" href="#">All Categories</a>
+    </div>
+    <div class="cat-grid" data-reveal-group data-reveal-step="120">
+      <a class="cat-card" href="#" data-reveal="shutter">
+        <img class="cat-card__img" src="assets/cat-cameras.jpg" width="928" height="1152" alt="Person holding a Fujifilm mirrorless camera outdoors" loading="lazy">
+        <span class="cat-card__tint" aria-hidden="true"></span>
+        <span class="cat-card__shade" aria-hidden="true"></span>
+        <span class="tag">Camera in hand, outdoors</span>
+        <span class="cat-card__info"><span class="cat-card__name">Cameras</span><span class="cat-card__count">192 items</span></span>
+      </a>
+      <a class="cat-card" href="#" data-reveal="shutter">
+        <img class="cat-card__img" src="assets/cat-lenses.jpg" width="928" height="1152" alt="Hand holding a prime lens beside a telephoto lens on a wooden table" loading="lazy">
+        <span class="tag">Camera in hand, outdoors</span>
+        <span class="cat-card__info"><span class="cat-card__name">Lenses</span><span class="cat-card__count">192 items</span></span>
+      </a>
+      <a class="cat-card" href="#" data-reveal="shutter">
+        <img class="cat-card__img" src="assets/cat-accessories.jpg" width="928" height="1152" alt="Videographer with a camera rig, light and microphone" loading="lazy">
+        <span class="cat-card__tint" aria-hidden="true"></span>
+        <span class="cat-card__shade" aria-hidden="true"></span>
+        <span class="tag">Camera in hand, outdoors</span>
+        <span class="cat-card__info"><span class="cat-card__name">Accessories</span><span class="cat-card__count">192 items</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ Popular right now (Figma 1:202) ============ -->
+  <section class="section container" aria-labelledby="popular-title">
+    <div class="section-head section-head--popular" data-reveal="focus">
+      <div class="section-head__start">
+        <h2 class="h-section" id="popular-title">Popular right now</h2>
+        <div class="tabs" role="tablist" aria-label="Product lists">
+          <span class="tab-indicator" aria-hidden="true"></span>
+          <button class="tab" type="button" role="tab" aria-selected="true" aria-controls="popular-track">Best Sellers</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="popular-track" tabindex="-1">New Arrivals</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="popular-track" tabindex="-1">Used</button>
+        </div>
+      </div>
+      <div class="section-head__end">
+        <a class="text-link" href="#">View All</a>
+        <div class="arrows">
+          <button class="arrow arrow--prev" type="button" aria-label="Previous products" data-live="false" data-carousel-prev="popular-track">
+            <img class="arrow__idle" src="assets/icon-arrow-prev.svg" width="48" height="48" alt="">
+            <img class="arrow__live" src="assets/icon-arrow-next.svg" width="48" height="48" alt="">
+          </button>
+          <button class="arrow arrow--next" type="button" aria-label="Next products" data-live="true" data-carousel-next="popular-track">
+            <img class="arrow__live" src="assets/icon-arrow-next.svg" width="48" height="48" alt="">
+            <img class="arrow__idle" src="assets/icon-arrow-prev.svg" width="48" height="48" alt="">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-track" id="popular-track" role="tabpanel" aria-labelledby="popular-title" data-reveal-group>
+      <article class="product-card" data-reveal="rise">
+        <div class="product-card__top">
+          <div class="product-card__media"><img src="assets/product-sony-a7cii.jpg" width="1264" height="848" alt="Sony A7C II on a wooden desk" loading="lazy"></div>
+          <div class="product-meta">
+            <div class="product-meta__text">
+              <p class="product-meta__eyebrow">Sony</p>
+              <h3 class="product-meta__name">Sony A7C II</h3>
+              <p class="specs"><span>40MP</span><span>23mm f/2</span><span>6-stop IBIS</span></p>
+            </div>
+            <p class="rating"><img src="assets/icon-star.svg" width="12" height="12" alt="">5.0 (312)</p>
+          </div>
+          <span class="tag">Best Sellers</span>
+        </div>
+        <div class="product-card__foot"><p class="price">$1,599</p><button class="btn btn--primary btn--sm" type="button" data-add-to-cart>Add to Cart</button></div>
+      </article>
+      <article class="product-card" data-reveal="rise">
+        <div class="product-card__top">
+          <div class="product-card__media"><img src="assets/product-canon-r6ii.jpg" width="1264" height="848" alt="Canon EOS R6 Mark II with a zoom lens" loading="lazy"></div>
+          <div class="product-meta">
+            <div class="product-meta__text">
+              <p class="product-meta__eyebrow">Canon</p>
+              <h3 class="product-meta__name">Canon EOS R6 Mark II</h3>
+              <p class="specs"><span>24MP</span><span>50mm f/1.8</span><span>5-stop IBIS</span></p>
+            </div>
+            <p class="rating"><img src="assets/icon-star.svg" width="12" height="12" alt="">4.9 (308)</p>
+          </div>
+          <span class="tag">Best Sellers</span>
+        </div>
+        <div class="product-card__foot"><p class="price">$1,599</p><button class="btn btn--primary btn--sm" type="button" data-add-to-cart>Add to Cart</button></div>
+      </article>
+      <article class="product-card" data-reveal="rise">
+        <div class="product-card__top">
+          <div class="product-card__media"><img src="assets/product-nikon-z6ii.jpg" width="1264" height="848" alt="Nikon Z6 II on a concrete table" loading="lazy"></div>
+          <div class="product-meta">
+            <div class="product-meta__text">
+              <p class="product-meta__eyebrow">Nikon</p>
+              <h3 class="product-meta__name">Nikon Z6 II</h3>
+              <p class="specs"><span>24MP</span><span>35mm f/1.8</span><span>5-stop IBIS</span></p>
+            </div>
+            <p class="rating"><img src="assets/icon-star.svg" width="12" height="12" alt="">4.9 (257)</p>
+          </div>
+          <span class="tag">Best Sellers</span>
+        </div>
+        <div class="product-card__foot"><p class="price">$1,599</p><button class="btn btn--primary btn--sm" type="button" data-add-to-cart>Add to Cart</button></div>
+      </article>
+      <article class="product-card" data-reveal="rise">
+        <div class="product-card__top">
+          <div class="product-card__media"><img src="assets/fujifilm-x100vi.jpg" width="1024" height="572" alt="Fujifilm X100VI in silver" loading="lazy"></div>
+          <div class="product-meta">
+            <div class="product-meta__text">
+              <p class="product-meta__eyebrow">Fujifilm</p>
+              <h3 class="product-meta__name">Fujifilm X100VI</h3>
+              <p class="specs"><span>26MP</span><span>28mm f/2.8</span><span>6-stop IBIS</span></p>
+            </div>
+            <p class="rating"><img src="assets/icon-star.svg" width="12" height="12" alt="">4.9 (257)</p>
+          </div>
+          <span class="tag">Best Sellers</span>
+        </div>
+        <div class="product-card__foot"><p class="price">$1,599</p><button class="btn btn--primary btn--sm" type="button" data-add-to-cart>Add to Cart</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SEO (Figma 1:318) ============ -->
+  <section class="section container seo" aria-labelledby="seo-title">
+    <div class="seo__text" data-reveal-group>
+      <h2 class="h-display" id="seo-title" data-reveal="focus">A camera store for new, used and film photography</h2>
+      <div class="seo__body">
+        <p data-reveal="focus" style="--blur:6px">Discover the perfect camera for your creative journey. Our selection features both new and pre-owned cameras, lenses, and film, all curated by passionate photographers. Each used item undergoes a thorough inspection and comes with a 12-month warranty for your peace of mind.</p>
+        <p data-reveal="focus" style="--blur:6px">Explore our extensive range of products, from the latest models to classic favorites, ensuring you find the right gear to capture your vision. Whether you're a seasoned pro or just starting out, we have everything you need to elevate your photography experience.</p>
+        <p class="seo__strong" data-reveal="focus" style="--blur:6px">Join our community of photographers and enjoy benefits like free 2-day shipping on orders over $99 and hassle-free returns within 30 days. Shop with confidence and let your creativity shine!</p>
+      </div>
+    </div>
+    <div class="seo__media" data-reveal="shutter"><img src="assets/seo-store.jpg" width="1916" height="821" alt="Camera store interior with mirrorless cameras and lenses on wooden display tables" loading="lazy" data-parallax></div>
+  </section>
+
+  <!-- ============ Trade in (Figma 1:326) ============ -->
+  <section class="section trade" aria-labelledby="trade-title">
+    <div class="trade__bg" aria-hidden="true"><div class="trade__photo" data-parallax></div></div>
+    <div class="trade__inner container">
+      <div class="trade__copy" data-reveal-group>
+        <h2 class="h-display" id="trade-title" data-reveal="focus">Trade in the camera you're not using.</h2>
+        <p data-reveal="focus" style="--blur:6px">Get a quote in two minutes. We send a free insured shipping label and pay within two days of your gear arriving.</p>
+        <form class="pill-field" action="#" data-reveal="focus" data-trade-form>
+          <img src="assets/icon-search-dark.svg" width="24" height="24" alt="">
+          <label class="sr-only" for="trade-model">Camera or lens model</label>
+          <input id="trade-model" type="text" placeholder="Camera or lens model, e.g. Sony A7 III" data-placeholder-short="Model, e.g. Sony A7 III">
+          <button class="btn btn--primary" type="submit">Get a Quote</button>
+        </form>
+        <div class="trade__note" data-reveal="focus" style="--blur:6px">
+          <p>Or put it toward something new and get 10% extra credit.</p>
+          <a class="u-link" href="#">How trade-in works</a>
+        </div>
+      </div>
+      <ul class="promises" data-reveal-group data-reveal-step="140">
+        <li class="promise" data-reveal="rise">
+          <img src="assets/icon-check-circle.svg" width="24" height="24" alt="">
+          <div><h3 class="promise__title">Checked by a technician</h3><p>Every used camera and lens passes a 50-point inspection before we list it.</p></div>
+        </li>
+        <li class="promise" data-reveal="rise">
+          <img src="assets/icon-check-circle.svg" width="24" height="24" alt="">
+          <div><h3 class="promise__title">12-month warranty</h3><p>Used gear gets the same cover as new, with free repair if anything fails.</p></div>
+        </li>
+        <li class="promise" data-reveal="rise">
+          <img src="assets/icon-check-circle.svg" width="24" height="24" alt="">
+          <div><h3 class="promise__title">Graded honestly</h3><p>Each listing shows its condition, shutter count and photos of the actual item, marks included.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ Featured (Figma 1:366) ============ -->
+  <section class="section container featured" aria-label="Featured products">
+    <div class="feature">
+      <div class="feature__text" data-reveal-group>
+        <div class="feature__head">
+          <span class="chip" data-reveal="focus">Featured Lenses</span>
+          <h2 class="h-display" data-reveal="focus">The Sigma Trio Lenses</h2>
+        </div>
+        <div class="feature__body" data-reveal="focus" style="--blur:6px">
+          <p>The Sigma f/1.4 Trio features three compact, high-performance prime lenses, 16mm, 30mm, and 56mm, designed for APS-C mirrorless cameras.</p>
+          <p>From breathtaking landscapes to everyday moments and stunning portraits, each lens delivers exceptional sharpness, beautiful background blur, and impressive low-light performance.</p>
+          <p><strong>Three focal lengths. Endless creative possibilities.</strong></p>
+        </div>
+        <div class="feature__actions" data-reveal="focus"><a class="btn btn--primary" href="#">Get These Lenses</a></div>
+      </div>
+      <div class="feature__media" data-reveal="shutter"><img src="assets/featured-sigma-trio.jpg" width="1920" height="819" alt="Three Sigma prime lenses on a rock at sunset above a lake" loading="lazy" data-parallax></div>
+    </div>
+
+    <div class="feature feature--reverse">
+      <div class="feature__media" data-reveal="shutter"><img src="assets/featured-fujifilm-xm5.jpg" width="1672" height="941" alt="Silver Fujifilm X-M5 with a kit zoom lens" loading="lazy" data-parallax></div>
+      <div class="feature__text" data-reveal-group>
+        <div class="feature__head">
+          <span class="chip" data-reveal="focus">New Arrival</span>
+          <h2 class="h-display" data-reveal="focus">Fujifilm X<span class="accent">-</span>M5</h2>
+        </div>
+        <div class="feature__body" data-reveal="focus" style="--blur:6px">
+          <p>New and used cameras, lenses and film from a shop run by working photographers. Every used item is inspected and covered for 12 months.</p>
+        </div>
+        <dl class="spec-bar" data-reveal="focus">
+          <div><dt>Sensor</dt><dd data-count>26MP</dd></div>
+          <div><dt>Video</dt><dd data-count>6.2k</dd></div>
+          <div><dt>Weight</dt><dd data-count>355g</dd></div>
+        </dl>
+        <div class="feature__actions" data-reveal="focus"><a class="btn btn--primary" href="#">Shop Cameras</a><a class="text-link" href="#">Read our review</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ Footer (Figma 1:406) ============ -->
+<footer class="footer">
+  <div class="footer__inner container">
+    <section class="footer__signup" aria-labelledby="signup-title" data-reveal-group>
+      <h2 class="h-display" id="signup-title" data-reveal="focus">Get first pick of used gear.</h2>
+      <p data-reveal="focus" style="--blur:6px">One email every Friday with the used gear that came in that week, plus new arrivals and price drops. Unsubscribe anytime.</p>
+      <form class="footer__form" action="#" data-reveal="focus" data-subscribe-form>
+        <label for="footer-email">Email Address</label>
+        <div class="pill-field pill-field--email">
+          <input id="footer-email" type="email" placeholder="Email Address" autocomplete="email" required>
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="footer__cols" data-reveal-group>
+      <nav class="footer__col" aria-label="Shop by brand" data-reveal="rise">
+        <p class="footer__title">Shop by brand</p>
+        <ul><li><a href="#">Canon</a></li><li><a href="#">Nikon</a></li><li><a href="#">Sony</a></li><li><a href="#">Fujifilm</a></li><li><a href="#">Leica</a></li><li><a href="#">Panasonic</a></li><li><a href="#">OM System</a></li><li><a href="#">Ricoh</a></li></ul>
+      </nav>
+      <nav class="footer__col" aria-label="Categories" data-reveal="rise">
+        <p class="footer__title">Categories</p>
+        <ul><li><a href="#">Cameras</a></li><li><a href="#">Lenses</a></li><li><a href="#">Film</a></li><li><a href="#">Video</a></li><li><a href="#">Accessories</a></li><li><a href="#">Used</a></li></ul>
+      </nav>
+      <div class="footer__col" data-reveal="rise">
+        <p class="footer__title">Social Media</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><img src="assets/icon-facebook.svg" width="12" height="12" alt=""></a>
+          <a href="#" aria-label="X"><img src="assets/icon-x.svg" width="12" height="12" alt=""></a>
+          <a href="#" aria-label="Instagram"><img src="assets/icon-instagram.svg" width="12" height="12" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Tablet and mobile menu (not in Figma; built from the mega menu's parts) ============ -->
+<div class="drawer" id="drawer" aria-hidden="true" data-drawer>
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer__head">
+      <a class="logo logo--dark" href="#top">Logo</a>
+      <button class="drawer__close" type="button" aria-label="Close menu" data-drawer-close>
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 10.586 4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95Z" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <form class="pill-field pill-field--drawer" role="search" action="#" style="--i:0">
+      <img src="assets/icon-search-dark.svg" width="24" height="24" alt="">
+      <label class="sr-only" for="drawer-search">Search</label>
+      <input id="drawer-search" type="search" placeholder="Search cameras, lenses, film">
+    </form>
+    <nav class="drawer__nav" aria-label="Main">
+      <details class="drawer__group" open style="--i:1">
+        <summary>Cameras</summary>
+        <ul class="drawer__types">
+          <li><a class="mega-type is-active" href="#"><img src="assets/icon-mirrorless-active.svg" width="40" height="40" alt=""><span class="mega-type__text"><span class="mega-type__title">Mirrorless</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span></a></li>
+          <li><a class="mega-type" href="#"><img src="assets/icon-dslr.svg" width="40" height="40" alt=""><span class="mega-type__text"><span class="mega-type__title">DSLR</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span></a></li>
+          <li><a class="mega-type" href="#"><img src="assets/icon-compact.svg" width="40" height="40" alt=""><span class="mega-type__text"><span class="mega-type__title">Compact and Premium</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span></a></li>
+          <li><a class="mega-type" href="#"><img src="assets/icon-film.svg" width="40" height="40" alt=""><span class="mega-type__text"><span class="mega-type__title">Film and Instant</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span></a></li>
+          <li><a class="mega-type" href="#"><img src="assets/icon-cinema.svg" width="40" height="40" alt=""><span class="mega-type__text"><span class="mega-type__title">Cinema Cameras</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span></a></li>
+          <li><a class="mega-type" href="#"><img src="assets/icon-used.svg" width="40" height="40" alt=""><span class="mega-type__text"><span class="mega-type__title">Used Cameras</span><span class="mega-type__desc">Interchangeable lenses in a compact body.</span></span></a></li>
+        </ul>
+        <details class="drawer__sub"><summary>Shop by brand</summary><ul><li><a href="#">Canon</a></li><li><a href="#">Nikon</a></li><li><a href="#">Sony</a></li><li><a href="#">Fujifilm</a></li><li><a href="#">Leica</a></li><li><a href="#">Panasonic</a></li><li><a href="#">OM System</a></li><li><a href="#">Ricoh</a></li></ul></details>
+        <details class="drawer__sub"><summary>Shop by use</summary><ul><li><a href="#">Travel</a></li><li><a href="#">Street</a></li><li><a href="#">Portraits</a></li><li><a href="#">Sports and wildlife</a></li><li><a href="#">Vlogging</a></li><li><a href="#">First camera</a></li></ul></details>
+        <details class="drawer__sub"><summary>Shop by price</summary><ul><li><a href="#">Under $800</a></li><li><a href="#">$800 to $1,500</a></li><li><a href="#">$1,500 to $3,000</a></li><li><a href="#">$3,000</a></li></ul></details>
+        <a class="btn btn--outline drawer__all" href="#">See all 412 cameras</a>
+      </details>
+      <a class="drawer__link" href="#" style="--i:2">About Us</a>
+      <a class="drawer__link" href="#" style="--i:3">Our Store</a>
+    </nav>
+    <div class="drawer__utility" style="--i:4">
+      <a href="#">Visit the store</a>
+      <a href="#">Trade in</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Intro for the design assessment team (not part of the store design) ============ -->
+<dialog class="intro-modal" aria-labelledby="intro-title" aria-describedby="intro-desc" data-intro-modal>
+  <div class="intro-modal__panel">
+    <div class="intro-modal__media" aria-hidden="true">
+      <img src="assets/hero-bg.jpg" width="2752" height="1536" alt="">
+      <span class="intro-modal__logo">Logo</span>
+    </div>
+    <button class="intro-modal__close" type="button" aria-label="Close" data-intro-close>
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 10.586 4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636l4.95 4.95Z" fill="currentColor"/></svg>
+    </button>
+
+    <div class="intro-modal__body">
+      <h2 class="intro-modal__title" id="intro-title" style="--i:0" tabindex="-1" autofocus>Hi, design assessment team.</h2>
+      <p class="intro-modal__lede" id="intro-desc" style="--i:1">Thanks for reviewing this project: a camera store homepage and mega menu, built 1:1 from the Figma file and extended to tablet and phone.</p>
+
+      <div class="intro-modal__note" style="--i:2">
+        <p class="intro-modal__label">Disclaimer</p>
+        <p>Images and content are AI-generated, but everything else is manually designed.</p>
+      </div>
+
+      <div class="intro-modal__tips" style="--i:3">
+        <p class="intro-modal__label">Worth trying</p>
+        <ul>
+          <li><span class="tip-lg">Hover <strong>Cameras</strong> in the header to open the mega menu.</span><span class="tip-sm">Tap the <strong>menu icon</strong> for the mobile version of the mega menu.</span></li>
+          <li><span class="tip-lg">Resize the window to see the tablet and phone layouts.</span><span class="tip-sm">Open it on a desktop too, where the mega menu opens on hover.</span></li>
+          <li>Scroll slowly. Each section animates in as it appears.</li>
+        </ul>
+      </div>
+
+      <p class="intro-modal__motion" style="--i:4" hidden data-motion-note>
+        Your device is set to reduce motion, so the animations are off.
+        <button class="intro-modal__motion-btn" type="button" data-motion-on>Turn animations on</button>
+      </p>
+
+      <div class="intro-modal__actions" style="--i:5">
+        <a class="btn btn--primary" href="https://www.figma.com/design/JuiXss5zgDMKGeqL5GE8kp/Designer-Skills-Test-Edit-v2?node-id=0-1&amp;t=5H1m5mcf2N7EvIFU-1" target="_blank" rel="noopener">
+          Open the Figma file
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6Zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8Z" fill="currentColor"/></svg>
+          <span class="sr-only">(opens in a new tab)</span>
+        </a>
+        <button class="btn btn--outline" type="button" data-intro-close>View the homepage</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<button class="notes-pill" type="button" hidden data-intro-open>
+  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10Zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM11 7h2v2h-2V7Zm0 4h2v6h-2v-6Z" fill="currentColor"/></svg>
+  Project notes
+</button>
+
+<!-- ============ Add to Cart toast (not in Figma) ============ -->
+<div class="toast" aria-hidden="true" data-toast>
+  <img class="toast__img" src="assets/product-sony-a7cii.jpg" width="56" height="42" alt="" loading="lazy">
+  <div class="toast__text"><p class="toast__label">Added to your bag</p><p class="toast__name">Sony A7C II</p></div>
+  <a class="toast__link u-link" href="#" tabindex="-1">View bag</a>
+</div>
+<p class="sr-only" role="status" aria-live="polite" data-announcer></p>
+
+<script src="main.js"></script>
+</body>
+</html>

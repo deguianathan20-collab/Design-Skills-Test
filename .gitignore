@@ -1,0 +1,12 @@
+# Vercel
+.vercel
+
+# Local tooling and logs
+node_modules/
+.playwright-mcp/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
