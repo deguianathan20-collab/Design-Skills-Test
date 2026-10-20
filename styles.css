@@ -159,7 +159,8 @@ button, input { font: inherit; color: inherit; }
   color: var(--surface-alt);
 }
 .hero__bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: #2b2016; }
-.hero__photo { position: absolute; inset: 0; background: url("assets/hero-bg.jpg") center / cover no-repeat; }
+.hero__photo { position: absolute; inset: 0; }   /* rack focus on load, scroll parallax */
+.hero__drift { position: absolute; inset: 0; background: url("assets/hero-bg.jpg") center / cover no-repeat; }   /* slow push-in, cursor parallax */
 /* Figma's diamond gradient overlay, exported as-is */
 .hero__bg::before {
   content: ""; position: absolute; inset: 0; z-index: 1; background-size: 100% 100%;
@@ -703,6 +704,15 @@ button, input { font: inherit; color: inherit; }
 /* ---------- Hero intro ---------- */
 .motion .hero__photo { opacity: 0; }
 .motion .hero.is-loaded .hero__photo { animation: rack-focus 1.9s var(--ease-out) both; }
+/* Slow push-in and pan, like a camera move. Starts slightly enlarged so the
+   drift and the cursor offset never show an edge. Pauses off screen. */
+.motion .hero__drift { scale: 1.06; transform: translate3d(var(--px, 0px), var(--py, 0px), 0); will-change: transform, scale, translate; }
+.motion .hero.is-loaded .hero__drift { animation: hero-drift 28s cubic-bezier(.45, 0, .55, 1) 1.4s infinite alternate both; }
+.motion .hero.is-offscreen .hero__drift { animation-play-state: paused; }
+@keyframes hero-drift {
+  from { scale: 1.06; translate: 0 0; }
+  to   { scale: 1.14; translate: -1.6% -1.2%; }
+}
 @keyframes rack-focus {
   from { opacity: 0; filter: blur(18px) saturate(.5); scale: 1.12; }
   35%  { opacity: 1; }
@@ -860,7 +870,7 @@ button, input { font: inherit; color: inherit; }
   .navbar__right, .navbar__tools { gap: 18px; }
 
   .hero { min-height: max(780px, 100svh); }
-  .hero__photo { background-position: 58% center; }
+  .hero__drift { background-position: 58% center; }
   .hero__bg::after { background: linear-gradient(to top, rgba(0, 0, 0, .74) 0%, rgba(0, 0, 0, .42) 70%, rgba(0, 0, 0, .18) 100%); }
   .hero__content { padding-top: 40px; padding-bottom: 32px; gap: 32px; }
   .hero__actions { flex-direction: column; gap: 12px; width: 100%; }

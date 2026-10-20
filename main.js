@@ -254,6 +254,39 @@
   initParallax();
 
   /* =========================================================
+     Hero photo: pause the slow drift off screen, and on desktop
+     shift the photo slightly with the cursor, like a viewfinder.
+     ========================================================= */
+  function initHeroDrift() {
+    if (!motion) return;
+    const drift = $('.hero__drift');
+    new IntersectionObserver(([entry]) => hero.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(hero);
+
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1025px)');
+    let targetX = 0, targetY = 0, x = 0, y = 0, frame = 0;
+    const step = () => {
+      x += (targetX - x) * 0.07;
+      y += (targetY - y) * 0.07;
+      drift.style.setProperty('--px', `${x.toFixed(2)}px`);
+      drift.style.setProperty('--py', `${y.toFixed(2)}px`);
+      const settled = Math.abs(targetX - x) < 0.05 && Math.abs(targetY - y) < 0.05;
+      frame = settled ? 0 : requestAnimationFrame(step);
+    };
+    const kick = () => { if (!frame) frame = requestAnimationFrame(step); };
+
+    hero.addEventListener('pointermove', (e) => {
+      if (!finePointer.matches || e.pointerType !== 'mouse') return;
+      const box = hero.getBoundingClientRect();
+      const max = Math.min(14, box.width * 0.008);   // stays inside the 6% overscan
+      targetX = -((e.clientX - box.left) / box.width - 0.5) * 2 * max;
+      targetY = -((e.clientY - box.top) / box.height - 0.5) * 2 * max * 0.7;
+      kick();
+    });
+    hero.addEventListener('pointerleave', () => { targetX = 0; targetY = 0; kick(); });
+  }
+  initHeroDrift();
+
+  /* =========================================================
      Mega menu: hover on desktop, click and keyboard everywhere
      ========================================================= */
   const trigger = $('[data-mega-trigger]');

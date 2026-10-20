@@ -14,7 +14,7 @@ ProjectA is a camera store. This is its homepage and Cameras mega menu, built 1:
 - **Desktop sizes** from 1025px to 2560px. The content stays at 1512px wide on large screens, and the mega menu drops its product cards as space runs out.
 - **Tablet and phone** layouts below 1025px, with a slide-in menu built from the mega menu's parts. These aren't in the Figma file.
 - **Fluid type.** Every font size scales between a 375px and a 1728px screen.
-- **Motion.** The hero photo racks into focus and the headline types out. Sections reveal on scroll, and buttons, tabs and the bag give feedback when used.
+- **Motion.** The hero photo racks into focus, then slowly pushes in and follows the cursor on desktop. The headline types out. Sections reveal on scroll, and buttons, tabs and the bag give feedback when used.
 - **Intro popup** for the design assessment team, shown once per browser session. The "Project notes" button in the corner reopens it.
 
 ## Motion and accessibility
